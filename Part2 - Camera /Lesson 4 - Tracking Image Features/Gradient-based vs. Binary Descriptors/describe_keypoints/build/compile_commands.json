@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/an/FOEASU-Linux/Sensor Fusion Nanodegree/Part2 - Camera /Lesson 4 - Tracking Image Features/Gradient-based vs. Binary Descriptors/describe_keypoints/build",
+  "command": "/usr/bin/g++-7   -isystem /usr/local/include/opencv4  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/describe_keypoints.dir/src/describe_keypoints.cpp.o -c \"/home/an/FOEASU-Linux/Sensor Fusion Nanodegree/Part2 - Camera /Lesson 4 - Tracking Image Features/Gradient-based vs. Binary Descriptors/describe_keypoints/src/describe_keypoints.cpp\"",
+  "file": "/home/an/FOEASU-Linux/Sensor Fusion Nanodegree/Part2 - Camera /Lesson 4 - Tracking Image Features/Gradient-based vs. Binary Descriptors/describe_keypoints/src/describe_keypoints.cpp"
+}
+]
