@@ -3,10 +3,8 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
-
 #include "structIO.hpp"
 
-using namespace std;
 
 void showLidarTopview()
 {
@@ -14,28 +12,29 @@ void showLidarTopview()
     readLidarPts("../dat/C51_LidarPts_0000.dat", lidarPoints);
 
     cv::Size worldSize(10.0, 20.0); // width and height of sensor field in m
-    cv::Size imageSize(1000, 2000); // corresponding top view image in pixel
+    cv::Size imageSize(512, 720); // corresponding top view image in pixel
 
     // create topview image
-    cv::Mat topviewImg(imageSize, CV_8UC3, cv::Scalar(0, 0, 0));
+    cv::Mat topviewImg(imageSize, CV_8UC3, cv::Scalar::all(0));
 
     // plot Lidar points into image
     for (auto it = lidarPoints.begin(); it != lidarPoints.end(); ++it)
     {
         float xw = (*it).x; // world position in m with x facing forward from sensor
         float yw = (*it).y; // world position in m with y facing left from sensor
+        float zw = (*it).z;
 
         int y = (-xw * imageSize.height / worldSize.height) + imageSize.height;
         int x = (-yw * imageSize.width / worldSize.width) + imageSize.width / 2;
 
-
-        cv::circle(topviewImg, cv::Point(x, y), 5, cv::Scalar(0, 0, 255), -1);
+        float minZ = -1.4; // Removing non-obstacles points
+        if(zw > minZ)
+        {
+            int red = std::min(255, (int)(255 * std::abs((it->x - worldSize.height) / worldSize.height)));
+            int green = std::min(255, (int)(255 * (1 - std::abs((it->x - worldSize.height) / worldSize.height))));
+            cv::circle(topviewImg, cv::Point(x, y), 1, cv::Scalar(0, green, red), -1);
+        }
         
-        // TODO: 
-        // 1. Change the color of the Lidar points such that 
-        // X=0.0m corresponds to red while X=20.0m is shown as green.
-        // 2. Remove all Lidar points on the road surface while preserving 
-        // measurements on the obstacles in the scene.
     }
 
     // plot distance markers
@@ -48,8 +47,8 @@ void showLidarTopview()
     }
 
     // display image
-    string windowName = "Top-View Perspective of LiDAR data";
-    cv::namedWindow(windowName, 2);
+    std::string windowName = "Top-View Perspective of LiDAR data";
+    cv::namedWindow(windowName, cv::WINDOW_NORMAL);
     cv::imshow(windowName, topviewImg);
     cv::waitKey(0); // wait for key to be pressed
 }
