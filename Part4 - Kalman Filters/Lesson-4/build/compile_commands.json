@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/home/ayman/FOE-Linux/Sensor Fusion Nanodegree/Part4 - Kalman Filters/Lesson-4/build",
+  "command": "/bin/g++-9    -g   -std=c++11 -o CMakeFiles/ufk_main.dir/src/main.cpp.o -c \"/home/ayman/FOE-Linux/Sensor Fusion Nanodegree/Part4 - Kalman Filters/Lesson-4/src/main.cpp\"",
+  "file": "/home/ayman/FOE-Linux/Sensor Fusion Nanodegree/Part4 - Kalman Filters/Lesson-4/src/main.cpp"
+},
+
+{
+  "directory": "/home/ayman/FOE-Linux/Sensor Fusion Nanodegree/Part4 - Kalman Filters/Lesson-4/build",
+  "command": "/bin/g++-9    -g   -std=c++11 -o CMakeFiles/ufk_main.dir/src/ukf.cpp.o -c \"/home/ayman/FOE-Linux/Sensor Fusion Nanodegree/Part4 - Kalman Filters/Lesson-4/src/ukf.cpp\"",
+  "file": "/home/ayman/FOE-Linux/Sensor Fusion Nanodegree/Part4 - Kalman Filters/Lesson-4/src/ukf.cpp"
+}
+]
